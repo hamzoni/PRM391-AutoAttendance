@@ -78,6 +78,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        return E::log(User::destroy($id));
+        return E::log(User::destroy($id) != 0);
     }
 }
