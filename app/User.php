@@ -7,22 +7,30 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use App\Eloquent as E;
 use Hash;
+use Validator;
 
 class User extends Authenticatable
 {
     use Notifiable;
 
-    public static function save(Request $request, $user) {
+    public static function create(Request $request, $user) {
         if ($user == null) return E::log(false, 'No user found');
-        
-        $name = trim($request->name);
-        $email = trim($request->email);
-        $password = trim($request->password);
+
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+
+        if ($validator->fails()) return E::log(false, $validator->errors());
+
         $role = trim($request->roll);
 
-        if ($name != null) $user->name = $name;
-        if ($email != null) $user->email = $email;
-        if ($password != null) $user->password = Hash::make($password);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
 
         if ($email != null) {
             if (User::isRole($role)) {
@@ -32,7 +40,7 @@ class User extends Authenticatable
             }
         }
         
-        return E::log($user->save, [
+        return E::log($user->save(), [
             'Save user fail',
             'Save user success'
         ]);

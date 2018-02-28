@@ -33,9 +33,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return User::orderBy('id', 'desc')->get();
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -44,7 +43,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return User::save($request, new User());
+        return User::create($request, new User());
     }
 
     /**
@@ -68,7 +67,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        return User::save($request, $user);
+        return User::create($request, $user);
     }
 
     /**
