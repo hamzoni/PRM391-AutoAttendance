@@ -1,0 +1,58 @@
+$blue: #4183C4;
+
+#content {
+  background-color: aliceblue;
+  min-height: 102vh;
+}
+
+.container {
+  min-height: 80vh;
+}
+
+.app-name {
+  font-weight: bold;
+  font-size: 25px;
+  float: left;
+  padding: 10px;
+  border: 2px solid $blue;
+}
+
+.nav-bar {
+  float: right;
+  margin-top: 5px;
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+/*login page*/
+
+.form-input {
+  margin-top: 50px;
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: auto;
+  padding: 40px!important;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  .title {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .field {
+    .checkbox {
+      float: left;
+      margin-bottom: 20px;
+    }
+  }
+  &.form-login {
+    max-height: 350px;
+    .field {
+      margin-bottom: 20px!important;
+    }
+  }
+}
+
+
