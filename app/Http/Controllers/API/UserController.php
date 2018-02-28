@@ -4,27 +4,17 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Eloquent as E;
+use Hash;
 
 class UserController extends Controller
 {
 
-      public function register(Request $request) {
-        $name = $request->name;
-        $email = $request->email;
-        $password = Hash::make($request->password);
-
-        // CREATE USER
-        $user = new User();
-
-        $user->name = $name;
-        $user->email = $email;
-        $user->password = $password;
-
-        $status = $user->save();
-       
-        return ['status' => $status];
+    public function register(Request $request) {
+        return $this->store($request);
     }
-    
+
     public function login(Request $request) {
         $info = [
             'email' => $request->email,
@@ -43,7 +33,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return User::all();
     }
 
     /**
@@ -54,7 +44,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return User::save($request, new User());
     }
 
     /**
@@ -65,7 +55,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return User::find($id);
     }
 
     /**
@@ -77,7 +67,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        return User::save($request, $user);
     }
 
     /**
@@ -88,6 +79,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return E::log(User::destroy($id));
     }
 }
