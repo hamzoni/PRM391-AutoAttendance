@@ -2,7 +2,5 @@ node_modules
 .tmp
 .idea
 .publish
-dist/index.html
-dist/js/app.js.map
-dist/styles/main.css.map
+*.map
 yarn-error.log
