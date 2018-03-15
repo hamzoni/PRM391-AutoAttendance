@@ -35,3 +35,5 @@ cv2.destroyAllWindows()
 
 
 # crop images
+data = '/home/taquy/Projects/python/prm/PRM391-AutoAttendance/tf/train/faces/' + args.f + '/';
+os.system('python3 /home/taquy/Projects/python/prm/PRM391-AutoAttendance/tf/face_crop/cropimg.py -f ' + data);
