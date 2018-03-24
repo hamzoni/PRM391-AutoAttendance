@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
 		file_put_contents($path, base64_decode($image));
 
-		$script = 'sudo python3 detect_list.py -i '.$path;
+		$script = 'python3 detect_list.py -i '.$path;
 
 		$lstval = system($script, $retval);
 
@@ -22,8 +22,8 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
 	}
 } else {
-	$path = "uploads/1521143019";
-	$script = 'sudo python3 detect_list.py -i '.$path;
+	$path = "/var/www/html/uploads/1521167279";
+	$script = 'xhost local:root && python3 detect_list.py -i '.$path;
 
 
 	// $output = shell_exec($script);

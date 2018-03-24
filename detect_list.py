@@ -16,6 +16,7 @@ import os.path
 import argparse
 
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 parser = argparse.ArgumentParser()
 parser.add_argument("-i", help="image to be processed")
 args = parser.parse_args()
